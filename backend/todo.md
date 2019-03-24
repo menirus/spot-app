@@ -1,7 +1,7 @@
 # Needed
 1. Add all the basic services required for badmiton score keeping
-..* Players, Scores, Matches
-..* Design queries to fetch the matches b/w players, etc
+   * Players, Scores, Matches
+   * Design queries to fetch the matches b/w players, etc
 2. Add lint checker to make the code consistent
 3. Add a UI in angular6 to complete the application
 
