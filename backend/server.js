@@ -16,7 +16,7 @@ const connection = mongoose.connection;
 
 connection.once('open', () => {
     console.log('MongoDB databse connection established successfully!');
-})
+});
 
 app.use('/', router);
 
