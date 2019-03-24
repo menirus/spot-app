@@ -22,7 +22,7 @@ app.use('/', router);
 
 router.route('/test').get((req, res) => {
     res.json({'abc': 'nammaa bengaluru'});
-})
+});
 
 router.route('/players').get((req, res) => {
     console.log('hell snow');
@@ -34,7 +34,7 @@ router.route('/players').get((req, res) => {
             res.json(players);
         }
     });
-})
+});
 
 router.route('/players/add').post((req, res) => {
     let player = new Player(req.body);
@@ -44,8 +44,8 @@ router.route('/players/add').post((req, res) => {
         })
         .catch(err => {
             res.status(400).send('Failed to create new record');
-        })
-})
+        });
+});
 // app.get('/', (req, res) => res.send('Hello World!'));
 
 app.listen(4000, () => console.log(`Express server running on port 4000`));
