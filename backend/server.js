@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import mongoose, { mongo } from 'mongoose';
 import Player from './models/Player';
 import Team from './models/Team';
+import * as PlayerCrud from './services/player_crud'
 
 const app = express();
 const router = express.Router();
@@ -36,6 +37,8 @@ router.route('/players').get((req, res) => {
         }
     });
 });
+
+router.route('/getPlayers').get(PlayerCrud.getPlayers);
 
 router.route('/players/add').post((req, res) => {
     let player = new Player(req.body);
