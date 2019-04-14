@@ -2,7 +2,7 @@ import Team from '../models/Team'
 
 const getAll = (req, res) => {
     Team.find()
-        .populate('players', 'name')
+        .populate('players', 'fullname username')
         .exec((err, teams) => {
         if(err) res.send('Error retreiving teams');
         res.json(teams);

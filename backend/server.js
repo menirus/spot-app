@@ -32,12 +32,12 @@ router.route('/test').get((req, res) => {
  *  Player crud operations
  * 
  **/
-router.route('/players/getAll').get(PlayerCrud.getPlayers);
+router.route('/players/getAll').get(PlayerCrud.getAll);
 router.route('/players/:name').get(PlayerCrud.getByName);
-router.route('/players/deleteAll').delete(PlayerCrud.deleteAllPlayers);
-router.route('/players/add').post(PlayerCrud.addPlayer);
-router.route('/players/delete').delete(PlayerCrud.deletePlayer);
-router.route('/players/updateByName').put(PlayerCrud.updatePlayer);
+router.route('/players/deleteAll').delete(PlayerCrud.deleteAll);
+router.route('/players/add').post(PlayerCrud.addOne);
+router.route('/players/delete/:id').delete(PlayerCrud.deleteOne);
+router.route('/players/update').put(PlayerCrud.update);
 
 /**
  *

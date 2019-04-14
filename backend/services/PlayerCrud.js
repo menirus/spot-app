@@ -1,7 +1,7 @@
 import Player from '../models/Player';
 
 // TODO: Denorm the name in player model to make the search efficient instead of doing regex search!
-const getPlayerByName = (req, res) => {
+const getByName = (req, res) => {
     console.log(req.body, req.params);
     Player.findOne({'name': new RegExp('^' + req.params.name + '$','i') }, (err, player) => {
         if(err)
@@ -12,7 +12,7 @@ const getPlayerByName = (req, res) => {
     })
 }
 
-const getAllPlayers = (req, res) => {
+const getAll = (req, res) => {
     console.log('hell snow');
     Player.find((err, players) => {
         if (err) {
@@ -25,7 +25,7 @@ const getAllPlayers = (req, res) => {
     })
 };
 
-const addPlayer = (req, res) => {
+const addOne = (req, res) => {
     let player = new Player(req.body);
     player.save()
         .then(player => {
@@ -36,22 +36,22 @@ const addPlayer = (req, res) => {
         });
 }
 
-const updatePlayer = (req, res) => {
-    Player.findOneAndUpdate({'name': new RegExp('^' + req.body.name + '$','i')}, req.body.newData, (err, player) => {
+const update = (req, res) => {
+    Player.findByIdAndUpdate(req.body._id, req.body, (err, player) => {
+        console.log(err, player);
         if(err) res.send('Sorry, update failed for some reason');   
         res.json(player);
-
     })
 }
 
-const deletePlayer = (req, res) => {
-    Player.findOneAndDelete({'name': new RegExp('^' + req.body.name + '$','i')}, (err, doc) => {
+const deleteOne = (req, res) => {
+    Player.findByIdAndDelete(req.params.id, (err, doc) => {
         if(err) res.send('Sorry, couldn\'t delete the playa!');
         res.send('Playa deleted succesfully bruv!');
     })
 }
 
-const deleteAllPlayers = (req, res) => {
+const deleteAll = (req, res) => {
     console.log('Deleting ah :(')
     Player.deleteMany({}, (err) => {
         if(err) 
@@ -62,10 +62,10 @@ const deleteAllPlayers = (req, res) => {
 }
 
 module.exports = {
-    'getByName': getPlayerByName,
-    'getPlayers': getAllPlayers,
-    'addPlayer': addPlayer,
-    'updatePlayer': updatePlayer,
-    'deletePlayer': deletePlayer,
-    'deleteAllPlayers': deleteAllPlayers
+    'getByName': getByName,
+    'getAll': getAll,
+    'addOne': addOne,
+    'update': update,
+    'deleteOne': deleteOne,
+    'deleteAll': deleteAll
 }
