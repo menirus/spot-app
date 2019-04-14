@@ -9,14 +9,11 @@ let Team = new Schema({
         unique: true
        //default: 
     },
-    type: {
+    teamType: {
         type: String,
         enum: ['Singles', 'Doubles', 'Mixed Doubles']
     },
-    players: {
-        type: [Player.schema],
-        required: true
-    }
+    players: [ {type: Schema.Types.ObjectId, ref: Player }]
 });
 
 export default mongoose.model('Team', Team);

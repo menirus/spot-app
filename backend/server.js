@@ -2,9 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose, { mongo } from 'mongoose';
-import Player from './models/Player';
-import Team from './models/Team';
 import * as PlayerCrud from './services/PlayerCrud'
+import * as TeamCrud from './services/TeamCrud'
 
 const app = express();
 const router = express.Router();
@@ -12,7 +11,9 @@ const router = express.Router();
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/players');
+mongoose.connect('mongodb://localhost:27017/players', { useNewUrlParser: true });
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
 
 const connection = mongoose.connection;
 
@@ -38,18 +39,16 @@ router.route('/players/add').post(PlayerCrud.addPlayer);
 router.route('/players/delete').delete(PlayerCrud.deletePlayer);
 router.route('/players/updateByName').put(PlayerCrud.updatePlayer);
 
-// Todo: Handle the team addition properly. Should we use player references in the schema? Explore one-to-many with names bloated up in subdoc method
-router.route('/team/add').post((req, res) => {
-    let team = new Team(req.body);
-    team.save()
-        .then(team => {
-            res.status(200).json({'team': team});
-        })
-        .catch(err => {
-            res.status(400).send('Failed to create new team');
-        });
-});
+/**
+ *
+ *  Team crud operations 
+ * 
+ **/
+router.route('/teams/getAll').get(TeamCrud.getAll);
+router.route('/teams/addOne').post(TeamCrud.addOne);
+router.route('/teams/update').put(TeamCrud.update);
+router.route('/teams/delete/:id').delete(TeamCrud.deleteOne);
+router.route('/teams/deleteAll').delete(TeamCrud.deleteAll);
 
-// app.get('/', (req, res) => res.send('Hello World!'));
 
 app.listen(4000, () => console.log(`Express server running on port 4000`));
