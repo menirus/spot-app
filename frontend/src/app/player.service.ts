@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Player } from './player.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +17,9 @@ export class PlayerService {
 
   getPlayerByName(name: String) {
     return this.http.get(`${this.uri}/players/${name}`);
+  }
+
+  updatePlayer(player: Player) {
+    return this.http.put(`${this.uri}/players/update`, player);
   }
 }

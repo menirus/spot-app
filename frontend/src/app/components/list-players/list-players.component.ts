@@ -17,6 +17,21 @@ export class ListPlayersComponent implements OnInit {
     this.fetchPlayers();
   }
 
+  editPlayer(player) {
+    player.editing = !player.editing;
+  }
+
+  savePlayer(player) {
+    console.log("Saved : ", player);
+    this.playerService
+      .updatePlayer(player)
+      .subscribe((data: Player[]) => {
+        console.log(data);
+      })
+    player.editing = !player.editing;
+
+  }
+
   fetchPlayers() {
     this.playerService
       .getPlayers()
