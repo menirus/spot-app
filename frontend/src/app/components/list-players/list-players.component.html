@@ -1,3 +1,20 @@
 <p>
   Here we'll display list of all players in SPOT
 </p>
+
+<div>
+  <mat-grid-list cols=3 >
+    <mat-grid-tile *ngFor="let player of players" >
+    <mat-card style="width: 250px;">
+      <mat-card-title-group>
+        <mat-card-title>{{player.username}}</mat-card-title>
+        <mat-card-subtitle>{{player.fullname}}, {{player.age}}</mat-card-subtitle>
+        <img mat-card-avatar src='../../../favicon.ico' />
+      </mat-card-title-group>
+      <mat-card-content>
+        {{player.bio}}
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  </mat-grid-list>
+</div>

@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlayerService } from './player.service';
+import { MatCardModule } from '@angular/material';
+import { MatGridListModule } from '@angular/material';
 
 import { ListPlayersComponent } from './components/list-players/list-players.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -21,7 +23,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatGridListModule
   ],
   providers: [PlayerService],
   bootstrap: [AppComponent]
