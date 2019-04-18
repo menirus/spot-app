@@ -11,13 +11,15 @@ import { MatGridListModule } from '@angular/material';
 import { ListPlayersComponent } from './components/list-players/list-players.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { PlayerCardComponent } from './components/player-card/player-card.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListPlayersComponent
+    ListPlayersComponent,
+    PlayerCardComponent
   ],
   imports: [
     BrowserModule,

@@ -23,11 +23,13 @@ export class ListPlayersComponent implements OnInit {
 
   savePlayer(player) {
     console.log("Saved : ", player);
+    
     this.playerService
       .updatePlayer(player)
       .subscribe((data: Player[]) => {
         console.log(data);
-      })
+      });
+
     player.editing = !player.editing;
 
   }
