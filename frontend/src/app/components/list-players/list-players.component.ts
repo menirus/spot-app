@@ -27,7 +27,7 @@ export class ListPlayersComponent implements OnInit {
   }
 
   addPlayer() {
-    // this.newPlayer = null;
+    this.newPlayer = {} as Player;
     this.newPlayer.editing = true;
   }
 

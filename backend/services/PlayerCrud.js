@@ -46,8 +46,8 @@ const update = (req, res) => {
 
 const deleteOne = (req, res) => {
     Player.findByIdAndDelete(req.params.id, (err, doc) => {
-        if(err) res.send('Sorry, couldn\'t delete the playa!');
-        res.send('Playa deleted succesfully bruv!');
+        if(err) res.json({'msg': 'Sorry, couldn\'t delete the playa!'});
+        res.json({'msg': 'Playa deleted succesfully bruv!'});
     })
 }
 

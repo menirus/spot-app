@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Player } from 'src/app/player.model';
 import { PlayerService } from '../../player.service';
 
@@ -11,14 +11,26 @@ export class PlayerCardComponent implements OnInit {
   @Input()
   player: Player;
 
+  @Output() 
+  refreshEvent= new EventEmitter();
+
   constructor(private playerService:PlayerService) { }
 
   ngOnInit() {
   }
 
 
-  editPlayer(player) {
+  editPlayer(player: Player) {
     player.editing = !player.editing;
+  }
+
+  deletePlayer(id: string) {
+    this.playerService
+      .deletePlayer(id)
+      .subscribe((data: any) => {
+        console.log(data);
+        this.refreshEvent.emit();
+      });
   }
 
 }

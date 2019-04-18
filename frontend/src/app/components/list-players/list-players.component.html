@@ -1,12 +1,14 @@
 <div>
   <mat-grid-list cols=3 >
-    <mat-grid-tile *ngFor="let player of players" >
-      <player-card *ngIf="!player.editing" [player]="player"></player-card>
-      <player-edit-card *ngIf="player.editing" [player]="player"></player-edit-card>
+    <mat-grid-tile *ngFor="let player of players">
+      <player-card [hidden]="player.editing" [player]="player" (refreshEvent)="fetchPlayers()"></player-card>
+      <player-edit-card [hidden]="!player.editing" [player]="player" (refreshEvent)="fetchPlayers()"></player-edit-card>
     </mat-grid-tile>
-    <mat-grid-tile>
-      <button *ngIf="!newPlayer.editing" mat-fab (click)="addPlayer()">+</button>
-      <player-edit-card *ngIf="newPlayer.editing" [player]="newPlayer" ></player-edit-card>
+    <mat-grid-tile *ngIf="!newPlayer.editing">
+        <button mat-fab (click)="addPlayer()" (refreshEvent)="fetchPlayers()">+</button>
+    </mat-grid-tile>
+    <mat-grid-tile [hidden]="!newPlayer.editing">
+      <player-edit-card [hidden]="!newPlayer.editing" [player]="newPlayer" (refreshEvent)="fetchPlayers()" ></player-edit-card>
     </mat-grid-tile>
   </mat-grid-list>
 </div>

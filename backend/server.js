@@ -34,9 +34,9 @@ router.route('/test').get((req, res) => {
  **/
 router.route('/players/getAll').get(PlayerCrud.getAll);
 router.route('/players/:name').get(PlayerCrud.getByName);
+router.route('/players/delete/:id').delete(PlayerCrud.deleteOne);
 router.route('/players/deleteAll').delete(PlayerCrud.deleteAll);
 router.route('/players/add').post(PlayerCrud.addOne);
-router.route('/players/delete/:id').delete(PlayerCrud.deleteOne);
 router.route('/players/update').put(PlayerCrud.update);
 
 /**

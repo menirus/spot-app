@@ -25,4 +25,9 @@ export class PlayerService {
     else
       return this.http.post(`${this.uri}/players/add`, player);
   }
+
+  deletePlayer(id: string) {
+    return this.http.delete(`${this.uri}/players/delete/${id}`);
+  }
+
 }

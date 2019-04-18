@@ -12,6 +12,9 @@ export class PlayerEditCardComponent implements OnInit {
   @Input()
   player: Player;
 
+  @Output()
+  refreshEvent = new EventEmitter();
+
   constructor(private playerService: PlayerService) { }
 
   ngOnInit() {
@@ -23,8 +26,9 @@ export class PlayerEditCardComponent implements OnInit {
     
     this.playerService
       .updatePlayer(player)
-      .subscribe((data: Player[]) => {
-        console.log(data);
+      .subscribe(result => {
+        console.log(result);
+        this.refreshEvent.emit();
       });
     player.editing = !player.editing;
 
