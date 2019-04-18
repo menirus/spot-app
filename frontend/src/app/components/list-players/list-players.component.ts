@@ -10,37 +10,35 @@ import { PlayerService } from '../../player.service';
 export class ListPlayersComponent implements OnInit {
   
   players: Player[];
+  newPlayer: Player;
+  addingPlayer: boolean;
 
-  constructor(private playerService: PlayerService) { }
+  constructor(private playerService: PlayerService) {
+    this.addingPlayer = false;
+  }
 
   ngOnInit() {
     this.fetchPlayers();
+    this.newPlayer = {} as Player;
   }
 
-  editPlayer(player) {
+  editPlayer(player: Player) {
     player.editing = !player.editing;
   }
 
-  savePlayer(player) {
-    console.log("Saved : ", player);
-    
-    this.playerService
-      .updatePlayer(player)
-      .subscribe((data: Player[]) => {
-        console.log(data);
-      });
-
-    player.editing = !player.editing;
-
+  addPlayer() {
+    // this.newPlayer = null;
+    this.newPlayer.editing = true;
   }
 
   fetchPlayers() {
+    console.log('Fetching players yo');
     this.playerService
       .getPlayers()
       .subscribe((data: Player[]) => {
         this.players = data;
         console.log('Data requested....');
-        console.log(this.players);
+        // console.log(this.players);
       });
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { PlayerService } from 'src/app/player.service';
 import { Player } from '@angular/core/src/render3/interfaces/player';
 
@@ -26,7 +26,6 @@ export class PlayerEditCardComponent implements OnInit {
       .subscribe((data: Player[]) => {
         console.log(data);
       });
-
     player.editing = !player.editing;
 
   }

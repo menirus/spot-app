@@ -20,6 +20,9 @@ export class PlayerService {
   }
 
   updatePlayer(player: Player) {
-    return this.http.put(`${this.uri}/players/update`, player);
+    if(player._id)
+      return this.http.put(`${this.uri}/players/update`, player);
+    else
+      return this.http.post(`${this.uri}/players/add`, player);
   }
 }
