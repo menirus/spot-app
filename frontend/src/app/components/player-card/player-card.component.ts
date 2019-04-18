@@ -21,17 +21,4 @@ export class PlayerCardComponent implements OnInit {
     player.editing = !player.editing;
   }
 
-  savePlayer(player: any) {     // using any here because we are adding 'editing' param dynamically. Think of something better here tho
-    console.log("Saved : ", player);
-    
-    this.playerService
-      .updatePlayer(player)
-      .subscribe((data: Player[]) => {
-        console.log(data);
-      });
-
-    player.editing = !player.editing;
-
-  }
-
 }

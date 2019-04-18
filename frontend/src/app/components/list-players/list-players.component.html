@@ -1,7 +1,8 @@
 <div>
   <mat-grid-list cols=3 >
     <mat-grid-tile *ngFor="let player of players" >
-      <player-card [player]="player"></player-card>
+      <player-card *ngIf="!player.editing" [player]="player"></player-card>
+      <player-edit-card *ngIf="player.editing" [player]="player"></player-edit-card>
     </mat-grid-tile>
   </mat-grid-list>
 </div>

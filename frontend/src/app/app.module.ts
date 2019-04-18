@@ -12,6 +12,7 @@ import { ListPlayersComponent } from './components/list-players/list-players.com
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { PlayerCardComponent } from './components/player-card/player-card.component';
+import { PlayerEditCardComponent } from './components/player-edit-card/player-edit-card.component';
 
 
 
@@ -19,7 +20,8 @@ import { PlayerCardComponent } from './components/player-card/player-card.compon
   declarations: [
     AppComponent,
     ListPlayersComponent,
-    PlayerCardComponent
+    PlayerCardComponent,
+    PlayerEditCardComponent
   ],
   imports: [
     BrowserModule,

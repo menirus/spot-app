@@ -1,0 +1,19 @@
+<div>
+  <mat-card>
+    <mat-card-title-group>
+      <mat-card-title><input [(ngModel)]="player.username"></mat-card-title>
+      <mat-card-subtitle>
+        <span><input [(ngModel)]="player.fullname"></span> ,
+        <span><input [(ngModel)]="player.age"></span> 
+      </mat-card-subtitle>
+      <img mat-card-avatar src='../../../favicon.ico' />
+    </mat-card-title-group>
+    <mat-card-content>
+      <textarea [(ngModel)]="player.bio"></textarea>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="accent" (click)="savePlayer(player)">Save</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
