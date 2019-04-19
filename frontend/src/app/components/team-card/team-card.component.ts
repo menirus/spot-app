@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Team } from 'src/app/team.model';
 import { Player } from 'src/app/player.model';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { PlayerService } from 'src/app/player.service';
 
 @Component({
   selector: 'app-team-card',
@@ -10,8 +11,9 @@ import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 })
 export class TeamCardComponent implements OnInit {
   team: Team;
+  players: Player[];
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private playerService: PlayerService) {
     this.team = {
       'name': 'Dream team',
       '_id': '13423451234',
@@ -21,15 +23,21 @@ export class TeamCardComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(AddTeamDialogueComponent, {
-      width: '250px',
-      data: {team: this.team}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('Dialog closed');
-      
-    });
+    this.playerService.getPlayers()
+      .subscribe((data: Player[]) => {
+        this.players = data;
+        console.log(this.players)
+        const dialogRef = this.dialog.open(AddTeamDialogueComponent, {
+          width: '600px',
+          height: '410px',
+          data: {team: this.team, players: this.players}
+        });
+    
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('Dialog closed');
+          
+        });
+      })
   }
 
   ngOnInit() {

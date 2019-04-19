@@ -1,1 +1,25 @@
-<h3> Modal working bruv!! </h3>
+<h2>Add team</h2>
+<mat-divider></mat-divider>
+<br/>
+<mat-form-field>
+    <input matInput [(ngModel)]="data.team.name" placeholder="Team name">
+</mat-form-field>
+
+<mat-form-field>
+    <mat-select placeholder="Select type" [(ngModel)]="data.team.teamType">
+        <mat-option value="Singles">Singles</mat-option>
+        <mat-option value="Doubles">Doubles</mat-option>
+        <mat-option value="Mixed Doubles">Mixed Doubles</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<mat-form-field id="teamPlayersSelect">
+    <mat-select [(ngModel)]="data.team.players" placeholder="Team members" multiple>
+        <mat-option *ngFor="let player of data.players" [value]="player._id">{{player.fullname}}, {{player.username}}</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<mat-card-actions>
+    <button mat-raised-button color="primary" >Save</button>
+    <button mat-raised-button color="warn" >Cancel</button>
+</mat-card-actions>
