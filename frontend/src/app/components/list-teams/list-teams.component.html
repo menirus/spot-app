@@ -1,3 +1,8 @@
-<p>
-  list-teams works!
-</p>
+<mat-grid-list cols=3>
+    <mat-grid-tile *ngFor="let team of teams">
+      <team-card [team]="team" (refreshTeamsEvent)="fetchTeams()"></team-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <button mat-fab (click)="openAddTeamDialog()">+</button>
+    </mat-grid-tile>
+</mat-grid-list>

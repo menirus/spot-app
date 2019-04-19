@@ -1,25 +1,39 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input, Output, EventEmitter } from '@angular/core';
 import { Team } from 'src/app/team.model';
 import { Player } from 'src/app/player.model';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { PlayerService } from 'src/app/services/player.service';
+import { TeamService } from 'src/app/services/team.service';
 
 @Component({
-  selector: 'app-team-card',
+  selector: 'team-card',
   templateUrl: './team-card.component.html',
   styleUrls: ['./team-card.component.css']
 })
 export class TeamCardComponent implements OnInit {
+  @Input()
   team: Team;
   players: Player[];
 
-  constructor(public dialog: MatDialog, private playerService: PlayerService) {
+
+  @Output() 
+  refreshTeamsEvent = new EventEmitter();
+
+  constructor(public dialog: MatDialog, private playerService: PlayerService, private teamService: TeamService) {
     this.team = {
       'name': 'Dream team',
       '_id': '13423451234',
       'teamType': 'Singles',
       'players': [ ({} as Player) ]
     }
+  }
+
+  deleteTeam(): void {
+    this.teamService.deleteTeam(this.team._id)
+      .subscribe(result => {
+        console.log(result);
+        this.refreshTeamsEvent.emit();
+      })
   }
 
   openDialog(): void {
@@ -34,8 +48,14 @@ export class TeamCardComponent implements OnInit {
         });
     
         dialogRef.afterClosed().subscribe(result => {
-          console.log('Dialog closed');
-          
+          console.log('Dialog closed', result);
+          if(result == {})
+            return;
+          this.teamService.updateTeam(result)
+            .subscribe(result => {
+              console.log(result);
+              this.refreshTeamsEvent.emit();
+            });
         });
       })
   }

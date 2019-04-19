@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatToolbarModule, MatButtonModule, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule, MatInputModule, MatSelectModule, MatDividerModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule, MatInputModule, MatSelectModule, MatDividerModule, MatChipsModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -42,6 +42,7 @@ import { ListTeamsComponent } from './components/list-teams/list-teams.component
     MatInputModule,
     MatSelectModule,
     MatDividerModule,
+    MatChipsModule,
     FormsModule
   ],
   providers: [

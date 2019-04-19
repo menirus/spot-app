@@ -31,8 +31,8 @@ const deleteOne = (req, res) => {
     console.log(req.params);
     Team.findByIdAndDelete(req.params.id, (err, doc) => {
         console.log(err, doc);
-        if(err) res.send('Unable to delete team');
-        res.send('Deleted the team succesfully!');
+        if(err) res.json('Unable to delete team');
+        res.json('Deleted the team succesfully!');
     })
 }
 

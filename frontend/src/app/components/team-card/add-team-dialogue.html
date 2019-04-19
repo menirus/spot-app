@@ -14,12 +14,13 @@
 </mat-form-field>
 
 <mat-form-field id="teamPlayersSelect">
+    {{data.team.players}}
     <mat-select [(ngModel)]="data.team.players" placeholder="Team members" multiple>
         <mat-option *ngFor="let player of data.players" [value]="player._id">{{player.fullname}}, {{player.username}}</mat-option>
     </mat-select>
 </mat-form-field>
 
 <mat-card-actions>
-    <button mat-raised-button color="primary" >Save</button>
-    <button mat-raised-button color="warn" >Cancel</button>
+    <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="data.team">Save</button>
 </mat-card-actions>
