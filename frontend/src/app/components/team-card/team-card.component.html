@@ -1,0 +1,18 @@
+<div>
+  <mat-card>
+    <mat-card-title-group>
+      <mat-card-title>{{team.name}}</mat-card-title>
+      <mat-card-subtitle>
+        <span>{{team.teamType}}</span> 
+      </mat-card-subtitle>
+      <img mat-card-avatar src='../../../favicon.ico' />
+    </mat-card-title-group>
+    <mat-card-content>
+      {{team.players.fullname}}
+    </mat-card-content>
+  
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="openDialog()"> Open</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

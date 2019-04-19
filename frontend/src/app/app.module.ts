@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatToolbarModule, MatButtonModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { PlayerCardComponent } from './components/player-card/player-card.component';
 import { PlayerEditCardComponent } from './components/player-edit-card/player-edit-card.component';
+import { TeamCardComponent, AddTeamDialogueComponent } from './components/team-card/team-card.component';
 
 
 
@@ -21,8 +22,11 @@ import { PlayerEditCardComponent } from './components/player-edit-card/player-ed
     AppComponent,
     ListPlayersComponent,
     PlayerCardComponent,
-    PlayerEditCardComponent
+    PlayerEditCardComponent,
+    TeamCardComponent,
+    AddTeamDialogueComponent
   ],
+  entryComponents: [AddTeamDialogueComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,9 +36,13 @@ import { PlayerEditCardComponent } from './components/player-edit-card/player-ed
     MatCardModule,
     MatGridListModule,
     MatButtonModule,
+    MatDialogModule,
     FormsModule
   ],
-  providers: [PlayerService],
+  providers: [
+    PlayerService,
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
