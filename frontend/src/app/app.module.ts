@@ -4,7 +4,7 @@ import { MatToolbarModule, MatButtonModule, MAT_DIALOG_DEFAULT_OPTIONS, MatDialo
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PlayerService } from './player.service';
+import { PlayerService } from './services/player.service';
 import { MatCardModule } from '@angular/material';
 import { MatGridListModule } from '@angular/material';
 
@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { PlayerCardComponent } from './components/player-card/player-card.component';
 import { PlayerEditCardComponent } from './components/player-edit-card/player-edit-card.component';
 import { TeamCardComponent, AddTeamDialogueComponent } from './components/team-card/team-card.component';
+import { ListTeamsComponent } from './components/list-teams/list-teams.component';
 
 
 
@@ -24,7 +25,8 @@ import { TeamCardComponent, AddTeamDialogueComponent } from './components/team-c
     PlayerCardComponent,
     PlayerEditCardComponent,
     TeamCardComponent,
-    AddTeamDialogueComponent
+    AddTeamDialogueComponent,
+    ListTeamsComponent
   ],
   entryComponents: [AddTeamDialogueComponent],
   imports: [

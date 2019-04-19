@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Team } from 'src/app/team.model';
 import { Player } from 'src/app/player.model';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { PlayerService } from 'src/app/player.service';
+import { PlayerService } from 'src/app/services/player.service';
 
 @Component({
   selector: 'app-team-card',

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Player } from 'src/app/player.model';
-import { PlayerService } from '../../player.service';
+import { PlayerService } from '../../services/player.service';
 
 @Component({
   selector: 'player-card',
