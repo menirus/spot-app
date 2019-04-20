@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatToolbarModule, MatButtonModule, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule, MatInputModule, MatSelectModule, MatDividerModule, MatChipsModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule, MatInputModule, MatSelectModule, MatDividerModule, MatChipsModule, MatTableModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,6 +15,7 @@ import { PlayerCardComponent } from './components/player-card/player-card.compon
 import { PlayerEditCardComponent } from './components/player-edit-card/player-edit-card.component';
 import { TeamCardComponent, AddTeamDialogueComponent } from './components/team-card/team-card.component';
 import { ListTeamsComponent } from './components/list-teams/list-teams.component';
+import { MatchCardComponent } from './components/match-card/match-card.component';
 
 
 
@@ -26,7 +27,8 @@ import { ListTeamsComponent } from './components/list-teams/list-teams.component
     PlayerEditCardComponent,
     TeamCardComponent,
     AddTeamDialogueComponent,
-    ListTeamsComponent
+    ListTeamsComponent,
+    MatchCardComponent
   ],
   entryComponents: [AddTeamDialogueComponent],
   imports: [
@@ -43,6 +45,7 @@ import { ListTeamsComponent } from './components/list-teams/list-teams.component
     MatSelectModule,
     MatDividerModule,
     MatChipsModule,
+    MatTableModule,
     FormsModule
   ],
   providers: [
