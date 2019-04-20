@@ -2,8 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose, { mongo } from 'mongoose';
-import * as PlayerCrud from './services/PlayerCrud'
-import * as TeamCrud from './services/TeamCrud'
+import * as PlayerCrud from './services/PlayerCrud';
+import * as TeamCrud from './services/TeamCrud';
+import * as MatchCrud from './services/MatchCrud';
 
 const app = express();
 const router = express.Router();
@@ -50,5 +51,14 @@ router.route('/teams/update').put(TeamCrud.update);
 router.route('/teams/delete/:id').delete(TeamCrud.deleteOne);
 router.route('/teams/deleteAll').delete(TeamCrud.deleteAll);
 
+/**
+ *
+ *  Match crud operations 
+ * 
+ **/
+router.route('/matches/getAll').get(MatchCrud.getAll);
+router.route('/matches/addOne').post(MatchCrud.addOne);
+router.route('/matches/update').put(MatchCrud.update);
+router.route('/matches/delete/:id').delete(MatchCrud.delete);
 
 app.listen(4000, () => console.log(`Express server running on port 4000`));
