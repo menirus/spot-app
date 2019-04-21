@@ -15,7 +15,7 @@ import { PlayerCardComponent } from './components/player-card/player-card.compon
 import { PlayerEditCardComponent } from './components/player-edit-card/player-edit-card.component';
 import { TeamCardComponent, AddTeamDialogueComponent } from './components/team-card/team-card.component';
 import { ListTeamsComponent } from './components/list-teams/list-teams.component';
-import { MatchCardComponent } from './components/match-card/match-card.component';
+import { MatchCardComponent, EditMatchDialogComponent } from './components/match-card/match-card.component';
 
 
 
@@ -28,9 +28,10 @@ import { MatchCardComponent } from './components/match-card/match-card.component
     TeamCardComponent,
     AddTeamDialogueComponent,
     ListTeamsComponent,
-    MatchCardComponent
+    MatchCardComponent,
+    EditMatchDialogComponent
   ],
-  entryComponents: [AddTeamDialogueComponent],
+  entryComponents: [AddTeamDialogueComponent, EditMatchDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
