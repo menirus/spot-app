@@ -1,1 +1,89 @@
-<div>Sample dialog bruv</div>
+<h2>Add match</h2>
+<mat-divider></mat-divider>
+<br/>
+
+
+<mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="data.match.day">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<br/>
+
+<mat-form-field id="teamPlayersSelect">
+    <mat-select [(ngModel)]="data.match.teams[0]" placeholder="Select Team A">
+        <mat-option *ngFor="let team of data.teams" [value]="team._id">{{team.name}}</mat-option>
+    </mat-select>
+</mat-form-field>
+
+&nbsp; &nbsp; &nbsp;
+VS
+&nbsp; &nbsp; &nbsp;
+<mat-form-field>
+    <mat-select [(ngModel)]="data.match.teams[1]" placeholder="Select Team B">
+        <mat-option *ngFor="let team of data.teams" [value]="team._id">{{team.name}}</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<br/>
+
+<table #matchtable mat-table style="width:100%;" [dataSource]="tableData" class="mat-elevation-z8">
+    <ng-container matColumnDef="sets">
+      <th mat-header-cell *matHeaderCellDef>Sets</th>
+      <td mat-cell *matCellDef="let element">{{element.set}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="teamA">
+      <th mat-header-cell *matHeaderCellDef>{{data.match.teams[0]}}</th>
+      <td mat-cell *matCellDef="let element">{{element.teamA}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="teamB">
+      <th mat-header-cell *matHeaderCellDef>{{data.match.teams[1]}}</th>
+      <td mat-cell *matCellDef="let element">{{element.teamB}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+
+<br/>
+<mat-grid-list cols="13" rowHeight="100px">
+    <!-- <form> -->
+    <mat-grid-tile [colspan]="2">Set {{tableData.length + 1}}</mat-grid-tile>
+    <mat-grid-tile [colspan]="5">
+        <mat-form-field>
+            <input matInput placeholder="{{data.match.teams[0]}}" [(ngModel)]="teamAInp">
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="5">
+        <mat-form-field>
+            <input matInput placeholder="{{data.match.teams[1]}}" [(ngModel)]="teamBInp">
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1">
+        <button class="pull-right" mat-icon-button color="accent" (click)="addSet()">
+            <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+        </button>
+    </mat-grid-tile>
+    <!-- </form> -->
+</mat-grid-list>
+
+<div>
+    <!-- <input matInput class="col-md-4" placeholder="{{data.match.teams[1]}}" [(ngModel)]="teamAInp">
+    <input matInput class="col-md-4" placeholder="{{data.match.teams[1]}}" [(ngModel)]="teamBInp">
+    <button class="pull-right" mat-icon-button color="accent">
+        <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+    </button>
+</div> -->
+
+<mat-card-actions>
+    <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="data.match">Save</button>
+</mat-card-actions>
+
+
+
+  {{data.match.day}}
